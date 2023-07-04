@@ -2,3 +2,9 @@
   color: red;
   font-size: 3rem;
 }
+
+.errorText {
+  color: red;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
