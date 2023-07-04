@@ -1,26 +1,8 @@
-import axios from "axios";
 import styles from "./PokemonList.module.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 
-export const PokemonList = () => {
-  const [pokemons, setPokemons] = useState([]);
-
-  async function getAllPokemons() {
-    const { data } = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon/?limit=151"
-    );
-    setPokemons(data.results);
-  }
-  // 1. obtener los 151 pokemon
-  // 2. guardar esos pokemon e un useState
-  // 3. renderizar eoso pokemon de forma dinamica en nuestro html
-  // 4. cuando hagamos click a un pokemon ir a la pagin de pokemon
-
-  useEffect(() => {
-    getAllPokemons();
-  }, []);
-
+export const PokemonList: React.FC<{ pokemons: any[] }> = ({ pokemons }) => {
   return (
     <div>
       <h1>Lista de todos los pokemon</h1>

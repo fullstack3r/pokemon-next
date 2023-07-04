@@ -1,20 +1,7 @@
-import { useEffect, useState } from "react";
+import { FC } from "react";
 import styles from "./Navbar.module.css";
 
-const Navbar = () => {
-  const [numeros, setNumeros] = useState(["", ""]);
-  const [first, setfirst] = useState(2);
-
-  useEffect(() => {
-    function generateRandomNumbers() {
-      const randomNumber1 = (Math.random() * 151).toFixed(0);
-      const randomNumber2 = (Math.random() * 151).toFixed(0);
-
-      setNumeros([randomNumber1, randomNumber2]);
-    }
-    generateRandomNumbers();
-  }, []);
-
+const Navbar: FC<{ numeros: string[] }> = ({ numeros }) => {
   return (
     <nav className={styles.navContainer}>
       <img
