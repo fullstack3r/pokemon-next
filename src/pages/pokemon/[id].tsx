@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const PokemonPage: NextPage<{ pokemonData: any }> = ({ pokemonData }) => {
-  console.log(pokemonData);
+  console.log(pokemonData.abilities[0]);
   // 1. obtener de la api la informacion del pokemon
   // 2. guardar esa informacion en memoria (usestate)
   // 3. mostrar esa información en pantalla
@@ -14,7 +14,17 @@ const PokemonPage: NextPage<{ pokemonData: any }> = ({ pokemonData }) => {
 
   return (
     <div>
-      <h1>POKEMON PAGE {pokemonData.name}</h1>
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonData.id}.png`}
+        alt=""
+      />
+      <h1>{pokemonData.name}</h1>
+      <h3>Habilidades de {pokemonData.name}</h3>
+      {pokemonData.abilities.map((ability: any) => (
+        <div>
+          <p className="text-red-500 ">{ability.ability.name}</p>
+        </div>
+      ))}
     </div>
   );
 };
